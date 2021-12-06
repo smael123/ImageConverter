@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ImageConverterConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "--source \"1501139078788.png\" --dest-width 256 --dest-height 256 --dest-type \"jpg\" --uncompressed"
+    }
+  }
+}

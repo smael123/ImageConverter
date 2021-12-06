@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverterLibrary", "ImageConverterLibrary\ImageConverterLibrary.csproj", "{515735C3-B1D4-48CF-976E-4F0E902AC0EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverterConsole", "ImageConverterConsole\ImageConverterConsole.csproj", "{D5D69822-B025-4BA7-A420-9AF777F784D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{515735C3-B1D4-48CF-976E-4F0E902AC0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515735C3-B1D4-48CF-976E-4F0E902AC0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515735C3-B1D4-48CF-976E-4F0E902AC0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515735C3-B1D4-48CF-976E-4F0E902AC0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D69822-B025-4BA7-A420-9AF777F784D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D69822-B025-4BA7-A420-9AF777F784D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D69822-B025-4BA7-A420-9AF777F784D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D69822-B025-4BA7-A420-9AF777F784D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AEE9DCE-8BAC-4E7A-A1FF-1F8CD0542178}
+	EndGlobalSection
+EndGlobal
