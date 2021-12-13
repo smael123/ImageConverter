@@ -16,7 +16,7 @@ using System.IO;
 
 namespace ImageConverterLibrary
 {
-    public class ImageConverter
+    public class ImageConverter : IImageConverter
     {
         public async Task ConvertImage(ImageConverterSettings settings)
         {
