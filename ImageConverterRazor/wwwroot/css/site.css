@@ -25,3 +25,8 @@ body {
 input, select {
     max-width: 400px;
 }
+
+.form-group, .form-check {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

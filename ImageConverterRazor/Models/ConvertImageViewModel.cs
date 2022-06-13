@@ -7,7 +7,7 @@ namespace ImageConverterRazor.Models
     {
         [Required]
         [Display(Name = "Source File")]
-        public IFormFile SourceFile { get; set; }
+        public IFormFile? SourceFile { get; set; }
 
         [Required]
         [Display(Name = "Conversion Type")]
@@ -15,11 +15,11 @@ namespace ImageConverterRazor.Models
 
         [Display(Name = "Width")]
         [Range(0, int.MaxValue)]
-        public int? DestinationPixelWidth { get; set; }
+        public int DestinationPixelWidth { get; set; }
 
         [Display(Name = "Height")]
         [Range(0, int.MaxValue)]
-        public int? DestinationPixelHeight { get; set; }
+        public int DestinationPixelHeight { get; set; }
 
         public bool Uncompressed { get; set; }
 
