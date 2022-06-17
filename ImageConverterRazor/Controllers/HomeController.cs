@@ -18,7 +18,7 @@ namespace ImageConverterRazor.Controllers
 
         public IActionResult Index(List<string> errorMessages)
         {
-            return View(new ConvertImageViewModel() { ErrorMessages = errorMessages });
+            return View("Index", new ConvertImageViewModel() { ErrorMessages = errorMessages });
         }
 
         public async Task<IActionResult> Convert(ConvertImageViewModel viewModel)
@@ -51,6 +51,7 @@ namespace ImageConverterRazor.Controllers
                     throw new NullReferenceException("SourceFile is null.");
                 }
 
+                //we could abstract this for testing but 0 byte temp files aren't dangerous
                 string sourceLocalFilePath = Path.GetTempFileName();
                 string destinationLocalFilePath = Path.GetTempFileName();
 
@@ -88,7 +89,7 @@ namespace ImageConverterRazor.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("Privacy");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
