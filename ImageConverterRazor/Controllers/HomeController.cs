@@ -59,7 +59,8 @@ namespace ImageConverterRazor.Controllers
                 {
                     DestinationPixelWidth = viewModel.DestinationPixelWidth,
                     DestinationPixelHeight = viewModel.DestinationPixelHeight,
-                    Uncompressed = viewModel.Uncompressed
+                    Uncompressed = viewModel.Uncompressed,
+                    OverwriteDestination = true
                 };
 
                 using (FileStream stream = System.IO.File.Create(sourceLocalFilePath))

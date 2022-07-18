@@ -18,7 +18,7 @@ namespace ImageConverterLibrary
 {
     public class ImageConverter : IImageConverter
     {
-        public async Task ConvertImage(ImageConverterSettings settings)
+        public async Task<ImageConverterResult> ConvertImage(ImageConverterSettings settings)
         {
             string sourceFilePath = settings.SourceFilePath;
             string destinationFilePath = settings.DestinationFilePath;
@@ -30,7 +30,14 @@ namespace ImageConverterLibrary
                 throw new Exception($"File: {settings.SourceFilePath} does not exist.");
             }
 
-            using (var image = await Image.LoadAsync(sourceFilePath))
+            if (!settings.OverwriteDestination && File.Exists(settings.DestinationFilePath))
+            {
+                throw new Exception($"Specified destination path: {settings.DestinationFilePath} already exists.");
+            }
+
+            int finalWidth, finalHeight;
+
+            using (Image image = await Image.LoadAsync(sourceFilePath))
             {
                 if (width.HasValue && height.HasValue)
                 {
@@ -39,7 +46,19 @@ namespace ImageConverterLibrary
 
                 var encoder = GetEncoder(settings);
                 await image.SaveAsync(destinationFilePath, encoder);
+
+                finalWidth = image.Width;
+                finalHeight = image.Height;
             }
+
+            return new ImageConverterResult
+            {
+                SourceFilePath = settings.SourceFilePath,
+                DestinationFilePath = settings.DestinationFilePath,
+                Width = finalWidth,
+                Height = finalHeight,
+                Uncompressed = settings.Uncompressed
+            };
         }
 
         private static IImageEncoder GetEncoder(ImageConverterSettings settings)

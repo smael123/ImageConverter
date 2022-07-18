@@ -1,56 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using ImageConverterConsole;
 using ImageConverterLibrary;
 
 //create settings object
 try
 {
-    var settings = GetSettingsFromArguments();
+    ImageConverterConsoleRunner runner = new(new ImageConverter());
+    ImageConverterResult result = await runner.RunConverter(args);
 
-    ImageConverter imageConverter = new();
-    await imageConverter.ConvertImage(settings);
-    Console.WriteLine($"Done:\nSource:\t{settings.SourceFilePath}\nDestination:\t{settings.DestinationFilePath}\nDimensions:\t{settings.DestinationPixelWidth} by {settings.DestinationPixelHeight}\nUncompressed:\t{(settings.Uncompressed ? "Yes" : "No")}\n");
+    Console.WriteLine($"Done\nSource:\t{result.SourceFilePath}\nDestination:\t{result.DestinationFilePath}\nDimensions:\t{result.Width} by {result.Height}\nUncompressed:\t{(result.Uncompressed ? "Yes" : "No")}\n");
 }
 catch (Exception ex)
 {
     Console.WriteLine("Error: " + ex.Message);
-}
-
-ImageConverterSettings GetSettingsFromArguments()
-{
-    int sourceFilePathIndex = Array.FindIndex(args, a => a == "--source");
-    if (sourceFilePathIndex == -1)
-    {
-        throw new Exception("Source file path not found.");
-    }
-    string sourceFilePath = args[sourceFilePathIndex + 1];
-
-    int destinationFileTypeIndex = Array.FindIndex(args, a => a == "--dest-type");
-    if (destinationFileTypeIndex == -1)
-    {
-        throw new Exception("You did not specify a destination file type.");
-    }
-    string destinationFileType = args[destinationFileTypeIndex + 1];
-
-    int destinationFilePathIndex = Array.FindIndex(args, a => a == "--dest");
-    string destinationFilePath =
-        destinationFilePathIndex == -1 ?
-            Path.Combine(Path.GetDirectoryName(sourceFilePath) ?? "", Path.GetFileNameWithoutExtension(sourceFilePath)) + "." + destinationFileType :
-            args[destinationFilePathIndex + 1];
-
-    int destinationWidthIndex = Array.FindIndex(args, a => a == "--dest-width");
-    int? destinationWidth = destinationWidthIndex == -1 ? null : int.Parse(args[destinationWidthIndex + 1]);
-
-    int destinationHeightIndex = Array.FindIndex(args, a => a == "--dest-height");
-    int? destinationHeight = destinationHeightIndex == -1 ? null : int.Parse(args[destinationHeightIndex + 1]);
-
-    int uncompressedIndex = Array.FindIndex(args, a => a == "--uncompressed");
-    bool uncompressed = uncompressedIndex != -1;
-
-    return new ImageConverterSettings(sourceFilePath, destinationFilePath, destinationFileType)
-    {
-        DestinationPixelWidth = destinationWidth,
-        DestinationPixelHeight = destinationHeight,
-        Uncompressed = uncompressed
-    };
 }

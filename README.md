@@ -11,23 +11,23 @@ Applications
 
 ## ImageConverterConsole
 
-A command line utility. Argument names are prefixed with "--" following the argument value.
+A command line utility. Argument names are prefixed with "-" following the argument value.
 
 ### Arguments
 
-#### --source
+#### -source
 
 Required: Yes
 
 File path of the image you want to convert.
 
-#### --dest
+#### -dest
 
 Required: No
 
 Destination path of your converted image. If not given then the converted image is saved in the same folder and file name as the source path.
 
-#### --dest-type
+#### -dest-type
 
 Required: Yes
 
@@ -41,19 +41,19 @@ Accepted values:
 - gif
 - tga
 
-#### --dest-width
+#### -dest-width
 
 Required: No
 
 Width in pixels of your converted image. If no value is given then the width of your converted image will be the same as your source image.
 
-#### --dest-height
+#### -dest-height
 
 Required: No
 
 Height in pixels of your converted image. If no value is given then the height of your converted image will be the same as your source image.
 
-#### --uncompressed
+#### -uncompressed
 
 Required : No
 
@@ -63,8 +63,8 @@ If this argument is present then the converted image will be uncompressed. You d
 
 Converts an image "before.jpg" to an uncompressed PNG file after.png with the dimensions 400x500.
 
-`ImageConverterConsole.exe --source "C:\Pictures\before.jpg --dest "C:\Pictures\after.png" --dest-type "tga" --dest-width 400 --dest-height 500 --uncompressed`
+`dotnet ImageConverterConsole.dll -source "C:\Pictures\before.jpg" -dest "C:\Pictures\after.png" -dest-type "png" -dest-width 400 -dest-height 500 -uncompressed`
 
 ## ImageConverterRazor
 
-On the image converter page `http://localhost:xxxx/Image/New` upload your image and then enter your desired values in the fields. You must specify the conversion type. When you click on the submit button, you will be prompted to download your converted image.
+On the image converter page `http://localhost:xxxx/Home/Index` upload your image and then enter your desired values in the fields. You must specify the conversion type. When you click on the submit button, you will be prompted to download your converted image.

@@ -4,6 +4,6 @@ namespace ImageConverterLibrary
 {
     public interface IImageConverter
     {
-        Task ConvertImage(ImageConverterSettings settings);
+        Task<ImageConverterResult> ConvertImage(ImageConverterSettings settings);
     }
 }
